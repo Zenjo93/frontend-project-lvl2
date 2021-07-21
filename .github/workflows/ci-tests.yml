@@ -15,3 +15,14 @@ jobs:
 
       - name: test
         run: npm run test
+
+env:
+  CI: true
+
+- name: Test & publish code coverage
+  uses: paambaati/codeclimate-action@v2.7.5
+  env:
+    CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATESECRET }}
+  with:
+    coverageCommand: make test-coverage
+    debug: true
