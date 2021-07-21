@@ -1,4 +1,4 @@
-name: CI
+name: ci-linter
 
 on:
   push:
@@ -12,9 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci
-
-      - name: test
-        run: npm run test
 
       - name: linter
         run: make lint
