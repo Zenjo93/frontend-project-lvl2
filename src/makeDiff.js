@@ -36,12 +36,10 @@ export default function (path1, path2) {
   })
 
   diffKeys.forEach(key => result = result.concat(`  + ${key}: ${file2[key]}\n`)) 
-
   
   result = result.concat('}' + '\n');
 
   console.log(result);
-
   return result;
 
 }
