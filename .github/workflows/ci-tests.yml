@@ -1,17 +1,19 @@
 name: ci-tests
 
 on:
-  push:
-    branches:
-      - '**'
+  - push
+  - pull_request
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci
+
+      - name: npm install
+        run: npm install
 
       - name: test
         run: npm run test
