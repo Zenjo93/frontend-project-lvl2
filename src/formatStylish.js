@@ -4,8 +4,11 @@ export const formatStylish = (diffTree) => {
   let diff = '{ \n';
 
   diffTree.forEach(el => {
-    
-    if (el['status'] === 'removed') {
+    if (el['value'] === 'nested') {
+      diff =  diff.concat(`${el['name']}: ${formatStylish(el['children'])}\n`)
+    }
+
+    else if (el['status'] === 'removed') {
       diff = diff.concat(` - ${el['name']}: ${el['value']}\n`);
     
       
@@ -23,9 +26,7 @@ export const formatStylish = (diffTree) => {
       diff = diff.concat(` ${el['name']}: ${el['value']}\n`);
     }
 
-    if (el['value'] === 'nested') {
-      diff =  diff.concat(`${el['name']}: ${formatStylish(el['children'])}\n`)
-    }
+    
 
   })
   
@@ -35,24 +36,48 @@ return diff;
 
 /*
 {
-  common: {
-    + follow: false
-      setting1: Value 1
-    - setting2: 200
-    - setting3: true
-    + setting3: null
-    + setting4: blah blah
-    + setting5: {
-          key5: value5
-      }
-      setting6: {
-          doge: {
-            - wow: 
-            + wow: so much
-          }
-          key: value
-        + ops: vops
-      }
-  }
+    common: {
+      + follow: false
+        setting1: Value 1
+      - setting2: 200
+      - setting3: true
+      + setting3: null
+      + setting4: blah blah
+      + setting5: {
+            key5: value5
+        }
+        setting6: {
+            doge: {
+              - wow: 
+              + wow: so much
+            }
+            key: value
+          + ops: vops
+        }
+    }
+    group1: {
+      - baz: bas
+      + baz: bars
+        foo: bar
+      - nest: {
+            key: value
+        }
+      + nest: str
+    }
+  - group2: {
+        abc: 12345
+        deep: {
+            id: 45
+        }
+    }
+  + group3: {
+        deep: {
+            id: {
+                number: 45
+            }
+        }
+        fee: 100500
+    }
+}
 
   */
