@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import parse from './parsers.js';
 import { buildDiffTree } from './buildDiffTree.js';
-
+import {formatStylish} from './formatStylish.js'
 // TODO: Программа должна уметь работать как с относительными, так и абсолютными путями до файлов
 
 export default (path1, path2) => {
@@ -9,10 +9,12 @@ export default (path1, path2) => {
 
   // Составление объекта с различиями 
   const diffObject = buildDiffTree(file1, file2);
-  console.log(JSON.stringify(diffObject, null, 2));
+  console.log('DIFFOBJECT: ' + JSON.stringify(diffObject, null, 2));
 
   // Форматирование объекта (stylish) возвращает строку
-  //const formatedDiffTree = formatStylish(diffObject);
+  // const formatedDiffTree = formatStylish(diffObject);
+
+  // console.log('RESULT: ' + formatedDiffTree);
 
   //console.log('result:' + result);
   //return formatedDiffTree;
