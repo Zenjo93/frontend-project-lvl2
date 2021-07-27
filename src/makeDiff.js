@@ -9,12 +9,13 @@ export default (path1, path2) => {
 
   // Составление объекта с различиями 
   const diffObject = buildDiffTree(file1, file2);
+  console.log(JSON.stringify(diffObject, null, 2));
 
   // Форматирование объекта (stylish) возвращает строку
-  const formatedDiffTree = formatStylish(diffObject);
+  //const formatedDiffTree = formatStylish(diffObject);
 
-  console.log('result:' + result);
-  return formatedDiffTree;
+  //console.log('result:' + result);
+  //return formatedDiffTree;
 
 }
 
