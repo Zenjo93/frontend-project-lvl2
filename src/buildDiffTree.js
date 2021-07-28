@@ -72,22 +72,33 @@ const getValue = (key, file1, file2) => {
 */
 
 // Получите уникальный список ключей из двух объектов. Дальше проверяйте объекты по каждому из этих ключей и формируйте одно дерево с дифом
+
+// TODO: добавить свойсто на глубину
 export const buildDiffTree = (file1, file2) => {
-  const uniqKeys = getUniqKeys(file1, file2);
-  const diffTree = [];
+
+  const iter = (file1, file2, depth) => {
+    const uniqKeys = getUniqKeys(file1, file2);
+    const diffTree = [];
   
-  uniqKeys.forEach(key => {
+    uniqKeys.forEach(key => {
     const prop = {};
     prop['name'] = key;
     prop['status'] = getStatus(key, file1, file2);
     prop['value'] = getValue(key, file1, file2) // возвращает массив если есть дифф
+    prop['depth'] = depth;
     if (prop['value'] === 'nested') {
-      prop['children'] = buildDiffTree(file1[key], file2[key]);
+      prop['children'] = iter(file1[key], file2[key], depth + 1);
     }
 
     diffTree.push(prop);
+
   })
 
-
   return diffTree;
+
+  }
+
+  
+
+return iter(file1, file2, 1);
 }

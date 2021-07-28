@@ -14,7 +14,7 @@ export default (path1, path2) => {
   // Форматирование объекта (stylish) возвращает строку
   const formatedDiffTree = formatStylish(diffObject);
 
-  console.log('RESULT: ' + formatedDiffTree);
+  console.log('RESULT: '+ '\n' + formatedDiffTree);
 
   //console.log('result:' + result);
   //return formatedDiffTree;
