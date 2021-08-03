@@ -73,7 +73,7 @@ const getValue = (key, file1, file2) => {
 
 // Получите уникальный список ключей из двух объектов. Дальше проверяйте объекты по каждому из этих ключей и формируйте одно дерево с дифом
 
-// TODO: добавить свойсто на глубину
+
 export const buildDiffTree = (file1, file2) => {
 
   const iter = (file1, file2, depth) => {

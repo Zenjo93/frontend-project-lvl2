@@ -5,11 +5,11 @@ export const formatStylish = (diffTree) => {
 
   const iter = (diffTree, depth) => {
     let diff = '';
-    const tabs = '  '.repeat(depth);
+    const tabs = '--'.repeat(depth);
 
     diffTree.forEach(el => {
-    
     if (el['value'] === 'nested') {
+      
       diff =  diff.concat(`${tabs}${el['name']}: ${iter(el['children'], depth + 1)}`)
     }
 
@@ -46,7 +46,7 @@ return iter(diffTree, 1);
 
 const stringify = (value, depth) => {
   if (_.isObject(value)) {
-    return `${toString(value, depth)}`
+    return toString(value, depth)
   }
 
   return value;
@@ -55,8 +55,8 @@ const stringify = (value, depth) => {
 const toString = (obj, depth) => {
   
     const keys = _.keys(obj);
-    let stringObj = '{' + '\n';
-    const tabs = '    '.repeat(depth);
+    let stringObj = '\n';
+    const tabs = '++'.repeat(depth);
 
     keys.forEach(key => {
       const value = obj[key];
@@ -65,11 +65,11 @@ const toString = (obj, depth) => {
         stringObj = stringObj.concat(`${tabs}${key}: ${toString(value, depth + 1)}\n`);
       }
       else {
-        stringObj = stringObj.concat(`${tabs}${key}: ${value}\n`);
+        stringObj = stringObj.concat(`!!!!${tabs}${key}: ${value}\n`);
       }
     })
 
-  return `${stringObj}`
+  return `{${stringObj}${tabs}}`
 }
 
 // OLD
