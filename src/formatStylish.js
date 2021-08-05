@@ -1,76 +1,61 @@
-
-import _ from "lodash";
+import _ from 'lodash';
 
 export const formatStylish = (diffTree) => {
-
   const iter = (diffTree, depth) => {
     let diff = '';
     const tabs = '--'.repeat(depth);
 
-    diffTree.forEach(el => {
-    if (el['value'] === 'nested') {
-      
-      diff =  diff.concat(`${tabs}${el['name']}: ${iter(el['children'], depth + 1)}`)
-    }
+    diffTree.forEach((el) => {
+      if (el.value === 'nested') {
+        diff = diff.concat(`${tabs}${el.name}: ${iter(el.children, depth + 1)}`);
+      } else if (el.status === 'removed') {
+        const value = stringify(el.value, depth);
+        diff = diff.concat(`${tabs}- ${el.name}: ${value}\n`);
+      } else if (el.status === 'added') {
+        const value = stringify(el.value, depth);
+        diff = diff.concat(`${tabs}+ ${el.name}: ${value}\n`);
+      } else if (el.status === 'changed') {
+        const value1 = stringify(el.value[0], depth);
+        const value2 = stringify(el.value[1], depth);
+        diff = diff.concat(`${tabs}- ${el.name}: ${value1}\n`);
+        diff = diff.concat(`${tabs}+ ${el.name}: ${value2}\n`);
+      } else {
+        const value = stringify(el.value, depth);
+        diff = diff.concat(`${tabs}  ${el.name}: ${value}\n`);
+      }
+    });
 
-    else if (el['status'] === 'removed') {
-      const value = stringify(el['value'], depth)
-      diff = diff.concat(`${tabs}- ${el['name']}: ${value}\n`);
-    
-      
-    }
-    else if (el['status'] === 'added') {
-      const value = stringify(el['value'], depth)
-      diff =  diff.concat(`${tabs}+ ${el['name']}: ${value}\n`)
-    }
+    return `{\n${diff}${tabs}}\n`;
+  };
 
-    else if(el['status'] === 'changed') {
-      const value1 = stringify(el['value'][0], depth)
-      const value2 = stringify(el['value'][1], depth)
-      diff = diff.concat(`${tabs}- ${el['name']}: ${value1}\n`)
-      diff = diff.concat(`${tabs}+ ${el['name']}: ${value2}\n`)
-    }
-
-    else {
-      const value = stringify(el['value'], depth)
-      diff = diff.concat(`${tabs}  ${el['name']}: ${value}\n`);
-    }
-  })
-
-  return `{\n${diff}${tabs}}\n`;
-  }
-
-
-return iter(diffTree, 1);
-}
+  return iter(diffTree, 1);
+};
 
 const stringify = (value, depth) => {
   if (_.isObject(value)) {
-    return toString(value, depth)
+    return toString(value, depth);
   }
 
   return value;
-}
+};
 
 const toString = (obj, depth) => {
-  
-    const keys = _.keys(obj);
-    let stringObj = '\n';
-    const tabs = '++'.repeat(depth);
+  const keys = _.keys(obj);
+  let stringObj = '\n';
+  const tabs = '++'.repeat(depth);
 
-    keys.forEach(key => {
-      const value = obj[key];
-  
-      if (_.isObject(value)) {
-        stringObj = stringObj.concat(`${tabs}${key}: ${toString(value, depth + 1)}\n`);
-      }
-      else {
-        stringObj = stringObj.concat(`!!!!${tabs}${key}: ${value}\n`);
-      }
-    })
+  keys.forEach((key) => {
+    const value = obj[key];
 
-  return `{${stringObj}${tabs}}`
-}
+    if (_.isObject(value)) {
+      stringObj = stringObj.concat(`${tabs}${key}: ${toString(value, depth + 1)}\n`);
+    } else {
+      stringObj = stringObj.concat(`!!!!${tabs}${key}: ${value}\n`);
+    }
+  });
+
+  return `{${stringObj}${tabs}}`;
+};
 
 // OLD
 
@@ -82,7 +67,7 @@ const toString = (obj, depth) => {
 
 //     keys.forEach(key => {
 //       const value = obj[key];
-  
+
 //       if (_.isObject(value)) {
 //         stringObj = stringObj.concat(`${tabs}${key}: ${iter(value, depth + 1)}\n`);
 //       }
@@ -96,12 +81,6 @@ const toString = (obj, depth) => {
 
 //   return iter(obj, 2);
 // }
-
-
-
-
-
-
 
 /*
 {
@@ -117,7 +96,7 @@ const toString = (obj, depth) => {
         }
         setting6: {
             doge: {
-              - wow: 
+              - wow:
               + wow: so much
             }
             key: value
@@ -151,7 +130,7 @@ const toString = (obj, depth) => {
 
   */
 
-/*************** Результат *********
+/** ************* Результат *********
 
 [
   {

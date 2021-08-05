@@ -12,5 +12,3 @@ program
   .argument('filepath2')
   .action((filepath1, filepath2) => makeDiff(filepath1, filepath2))
   .parse();
-
-
