@@ -5,16 +5,14 @@ import { formatStylish } from './formatStylish.js';
 
 export default (path1, path2) => {
   const [file1, file2] = parse(path1, path2);
-
-  // Составление объекта с различиями
-  const diffObject = buildAST(file1, file2);
-  console.log(`DIFFOBJECT NEW: ${JSON.stringify(diffObject, null, 2)}`);
+  const tree = buildAST(file1, file2);
+  // console.log(`DIFFOBJECT NEW: ${JSON.stringify(tree, null, 2)}`);
 
   // Форматирование объекта (stylish) возвращает строку
-  const formatedDiffTree = formatStylish(diffObject);
+  const stylishDiff = formatStylish(tree);
 
   // console.log(`${'RESULT: ' + '\n'}${formatedDiffTree}`);
 
   // console.log('result:' + result);
-  return formatedDiffTree;
+  return stylishDiff;
 };

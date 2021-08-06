@@ -60,3 +60,129 @@ const buildAST = (file1, file2) => {
 };
 
 export default buildAST;
+
+const tree =
+[
+  {
+    "name": "common",
+    "status": "nested",
+    "value": [
+      {
+        "name": "setting1",
+        "status": "unchanged",
+        "value": "Value 1"
+      },
+      {
+        "name": "setting2",
+        "status": "deleted",
+        "value": 200
+      },
+      {
+        "name": "setting3",
+        "status": "changed",
+        "value": [
+          true,
+          null
+        ]
+      },
+      {
+        "name": "setting6",
+        "status": "nested",
+        "value": [
+          {
+            "name": "key",
+            "status": "unchanged",
+            "value": "value"
+          },
+          {
+            "name": "doge",
+            "status": "nested",
+            "value": [
+              {
+                "name": "wow",
+                "status": "changed",
+                "value": [
+                  "",
+                  "so much"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "ops",
+            "status": "added",
+            "value": "vops"
+          }
+        ]
+      },
+      {
+        "name": "follow",
+        "status": "added",
+        "value": false
+      },
+      {
+        "name": "setting4",
+        "status": "added",
+        "value": "blah blah"
+      },
+      {
+        "name": "setting5",
+        "status": "added",
+        "value": {
+          "key5": "value5"
+        }
+      }
+    ]
+  },
+  {
+    "name": "group1",
+    "status": "nested",
+    "value": [
+      {
+        "name": "baz",
+        "status": "changed",
+        "value": [
+          "bas",
+          "bars"
+        ]
+      },
+      {
+        "name": "foo",
+        "status": "unchanged",
+        "value": "bar"
+      },
+      {
+        "name": "nest",
+        "status": "changed",
+        "value": [
+          {
+            "key": "value"
+          },
+          "str"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "group2",
+    "status": "deleted",
+    "value": {
+      "abc": 12345,
+      "deep": {
+        "id": 45
+      }
+    }
+  },
+  {
+    "name": "group3",
+    "status": "added",
+    "value": {
+      "deep": {
+        "id": {
+          "number": 45
+        }
+      },
+      "fee": 100500
+    }
+  }
+]
