@@ -1,6 +1,8 @@
 import _ from 'lodash';
 
 const getUniqKeys = (file1, file2) => {
+
+  // TODO: зарефакторить через  _.union
   const keysFile1 = _.keys(file1);
 
   const diffKeys = _.difference(_.keys(file2), _.keys(file1));
@@ -66,7 +68,7 @@ const getValue = (key, file1, file2) => {
 
 // Получите уникальный список ключей из двух объектов. Дальше проверяйте объекты по каждому из этих ключей и формируйте одно дерево с дифом
 
-export const buildDiffTree = (file1, file2) => {
+export const buildAST = (file1, file2) => {
   const iter = (file1, file2, depth) => {
     const uniqKeys = getUniqKeys(file1, file2);
     const diffTree = [];
