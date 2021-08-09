@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
-import makeDiff from '../src/makeDiff.js';
 import * as fs from 'fs';
+import makeDiff from '../src/makeDiff.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
