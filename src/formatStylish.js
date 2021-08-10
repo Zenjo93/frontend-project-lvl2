@@ -8,13 +8,9 @@ const getChildren = (tree) => {
 };
 
 
-const hasChildren = (node) => {
-  return _.has(node, 'children')
-}
-
 const buildString = (node, currentIndent) => {
   switch (node.status) {
-    case 'deleted':
+    case 'deleted': //
       return `${currentIndent} - ${node.name}: ${node.value}`;
     case 'added':
       return `${currentIndent} + ${node.name}: ${node.value}`;
@@ -29,10 +25,12 @@ const buildString = (node, currentIndent) => {
   }
 };
 
-const formatStylish = (tree) => {
+const formatStylish = (tree, depth = 1) => {
+  // TODO: убрать итер
   const iter = (node, depth) => {
+    // подсчет отступов в отдельную функцию в зависимости от глубины
     const spacesCount = 2;
-    const indentSize = depth + spacesCount;
+    const indentSize = depth * spacesCount;
     const currentIndent = ' '.repeat(indentSize);
     const bracketIndent = ' '.repeat(indentSize - spacesCount);
 
@@ -43,6 +41,7 @@ const formatStylish = (tree) => {
     const name = node.name;
     const children = getChildren(node);
 
+    // проходим switch (в зависимости от типа ноды выбираем что с ней делать)
     const lines = children.flatMap((child) => {
 
       // console.log('child: ' + JSON.stringify(child, null, 2))
@@ -52,10 +51,9 @@ const formatStylish = (tree) => {
     });
 
     if (typeof name === 'undefined') {
-      return ['{', ...lines, `${bracketIndent}}`].join('\n');
+      return ['\n {', ...lines, `${bracketIndent}}`].join('\n');
     }
     return [`${currentIndent}${name}: {`, ...lines, `${bracketIndent}}`].join('\n');
-
 
   };
 
@@ -63,3 +61,4 @@ const formatStylish = (tree) => {
 };
 
 export default formatStylish;
+
