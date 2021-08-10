@@ -13,5 +13,5 @@ export default (path1, path2) => {
   // console.log(`${'RESULT: ' + '\n'}${formatedDiffTree}`);
 
   // console.log('result:' + result);
-  return stylishDiff;
+  return stylishDiff.trim();
 };

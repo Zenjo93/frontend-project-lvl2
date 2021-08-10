@@ -18,10 +18,10 @@ const YmlPath2 = getFixturePath('file2.yaml');
 
 test('JSON files', () => {
   const actual = makeDiff(JSONPath1, JSONpath2);
-  expect(actual).toMatch(expected);
+  expect(actual).toEqual(expected);
 });
 
 test('YML files', () => {
   const actual = makeDiff(YmlPath1, YmlPath2);
-  expect(actual).toMatch(expected);
+  expect(actual).toEqual(expected);
 });
