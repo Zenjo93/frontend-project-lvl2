@@ -25,15 +25,14 @@ const buildValue = (value, depth) => {
     return ['{', ...lines, `${getIndent(depth)}}`,
     ].join('\n');
   }
-    return value;
+  return value;
 };
 
-
-const formatStylish = (tree, depth = 1) => {
+const stylish = (tree, depth = 1) => {
 
   const lines = tree.flatMap((node) => {
     if (node.type === 'nested') {
-      return `${getIndent(depth + 1)}${node.name}: ${formatStylish(node.children, depth + 2)}`;
+      return `${getIndent(depth + 1)}${node.name}: ${stylish(node.children, depth + 2)}`;
     }
     if (node.type === 'deleted') {
       return `${getIndent(depth)}${SIGNS.deleted}${node.name}: ${buildValue(node.value, depth + 1)}`;
@@ -53,4 +52,4 @@ const formatStylish = (tree, depth = 1) => {
   ].join('\n');
 };
 
-export default formatStylish;
+export default stylish;
