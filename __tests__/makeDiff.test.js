@@ -10,6 +10,7 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 
 const stylishFormat = fs.readFileSync(getFixturePath('stylish.txt'), 'utf-8');
 const plainFormat = fs.readFileSync(getFixturePath('plain.txt'), 'utf-8');
+const JSONFormat = fs.readFileSync(getFixturePath('jsonFormat.json'), 'utf-8');
 
 const JSONPath1 = getFixturePath('file1.json');
 const JSONPath2 = getFixturePath('file2.json');
@@ -38,5 +39,17 @@ describe('Plain formatting', () => {
   test('YML files', () => {
     const actual = makeDiff(YmlPath1, YmlPath2, 'plain');
     expect(actual).toEqual(plainFormat);
+  });
+});
+
+describe('JSON formatting', () => {
+  test('JSON files', () => {
+    const actual = makeDiff(JSONPath1, JSONPath2, 'json');
+    expect(actual).toEqual(JSONFormat);
+  });
+
+  test('YML files', () => {
+    const actual = makeDiff(YmlPath1, YmlPath2, 'json');
+    expect(actual).toEqual(JSONFormat);
   });
 });
