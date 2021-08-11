@@ -9,7 +9,6 @@ const SIGNS = {
 };
 
 const getIndent = (depth = 1) => {
-  // если есть знак + 2 без знака * 2
   const indentSize = depth * INDENT_COUNT;
   const currentIndent = ' '.repeat(indentSize);
 
@@ -29,7 +28,6 @@ const buildValue = (value, depth) => {
 };
 
 const stylish = (tree, depth = 1) => {
-
   const lines = tree.flatMap((node) => {
     if (node.type === 'nested') {
       return `${getIndent(depth + 1)}${node.name}: ${stylish(node.children, depth + 2)}`;
