@@ -10,11 +10,7 @@ program
 program
   .arguments('<path1>, <path2>')
   .action((path1, path2, options) => {
-    if (options.format === 'plain') {
-      console.log('plain format');
-    } else {
-      console.log(makeDiff(path1, path2));
-    }
+    console.log(makeDiff(path1, path2, options.format));
   });
 
 program.parse();
