@@ -8,20 +8,35 @@ const __dirname = dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
-const expected = fs.readFileSync(getFixturePath('resultTree.txt'), 'utf-8');
+const stylishFormat = fs.readFileSync(getFixturePath('stylish.txt'), 'utf-8');
+const plainFormat = fs.readFileSync(getFixturePath('plain.txt'), 'utf-8');
 
 const JSONPath1 = getFixturePath('file1.json');
-const JSONpath2 = getFixturePath('file2.json');
+const JSONPath2 = getFixturePath('file2.json');
 
 const YmlPath1 = getFixturePath('file1.yml');
 const YmlPath2 = getFixturePath('file2.yaml');
 
-test('JSON files', () => {
-  const actual = makeDiff(JSONPath1, JSONpath2);
-  expect(actual).toEqual(expected);
+describe('Stylish formatting', () => {
+  test('JSON files', () => {
+    const actual = makeDiff(JSONPath1, JSONPath2);
+    expect(actual).toEqual(stylishFormat);
+  });
+
+  test('YML files', () => {
+    const actual = makeDiff(YmlPath1, YmlPath2);
+    expect(actual).toEqual(stylishFormat);
+  });
 });
 
-test('YML files', () => {
-  const actual = makeDiff(YmlPath1, YmlPath2);
-  expect(actual).toEqual(expected);
+describe('Plain formatting', () => {
+  test('JSON files', () => {
+    const actual = makeDiff(JSONPath1, JSONPath2, 'plain');
+    expect(actual).toEqual(plainFormat);
+  });
+
+  test('YML files', () => {
+    const actual = makeDiff(YmlPath1, YmlPath2, 'plain');
+    expect(actual).toEqual(plainFormat);
+  });
 });
