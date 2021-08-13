@@ -18,9 +18,7 @@ const getIndent = (depth = 1) => {
 const buildValue = (value, depth) => {
   if (_.isObject(value)) {
     const keys = _.keys(value);
-    const lines = keys.map((key) => {
-      return `${getIndent(depth + 2)}${key}: ${buildValue(value[key], depth + 2)}`;
-    });
+    const lines = keys.map((key) => `${getIndent(depth + 2)}${key}: ${buildValue(value[key], depth + 2)}`);
     return ['{', ...lines, `${getIndent(depth)}}`,
     ].join('\n');
   }

@@ -7,14 +7,10 @@ const getUniqKeys = (file1, file2) => {
 };
 
 const buildAST = (file1, file2) => {
-  const keys = getUniqKeys(file1, file2).sort();
-
-  const result = [];
-
-  for (const key of keys) {
+  const keys = _.sortBy(getUniqKeys(file1, file2));
+  const result = keys.map((key) => {
     const node = {};
     node.name = key;
-
     if (_.isObject(file1[key]) && _.isObject((file2[key]))) {
       node.type = 'nested';
       node.children = buildAST(file1[key], file2[key]);
@@ -31,8 +27,8 @@ const buildAST = (file1, file2) => {
       node.type = 'unchanged';
       node.value = file1[key];
     }
-    result.push(node);
-  }
+    return node;
+  });
 
   return result;
 };
