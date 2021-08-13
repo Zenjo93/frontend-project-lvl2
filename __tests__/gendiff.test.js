@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import * as fs from 'fs';
-import gendiff from '../bin/cli.js';
+import genDiff from '../gendiff.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -20,38 +20,36 @@ const YmlPath2 = getFixturePath('file2.yaml');
 
 describe('Stylish formatting', () => {
   test('JSON files', () => {
-    const actual = makeDiff(JSONPath1, JSONPath2);
+    const actual = genDiff(JSONPath1, JSONPath2);
     expect(actual).toEqual(stylishFormat);
   });
 
   test('YML files', () => {
-    const actual = makeDiff(YmlPath1, YmlPath2);
+    const actual = genDiff(YmlPath1, YmlPath2);
     expect(actual).toEqual(stylishFormat);
   });
 });
 
 describe('Plain formatting', () => {
   test('JSON files', () => {
-    const actual = makeDiff(JSONPath1, JSONPath2, 'plain');
+    const actual = genDiff(JSONPath1, JSONPath2, 'plain');
     expect(actual).toEqual(plainFormat);
   });
 
   test('YML files', () => {
-    const actual = makeDiff(YmlPath1, YmlPath2, 'plain');
+    const actual = genDiff(YmlPath1, YmlPath2, 'plain');
     expect(actual).toEqual(plainFormat);
   });
 });
 
 describe('JSON formatting', () => {
   test('JSON files', () => {
-    const actual = makeDiff(JSONPath1, JSONPath2, 'json');
+    const actual = genDiff(JSONPath1, JSONPath2, 'json');
     expect(actual).toEqual(JSONFormat);
   });
 
   test('YML files', () => {
-    const actual = makeDiff(YmlPath1, YmlPath2, 'json');
+    const actual = genDiff(YmlPath1, YmlPath2, 'json');
     expect(actual).toEqual(JSONFormat);
   });
 });
-
-gendiff()

@@ -2,7 +2,7 @@
 <coverage generated="1626875498089" clover="3.2.0">
   <project timestamp="1626875498089" name="All files">
     <metrics statements="45" coveredstatements="45" conditionals="9" coveredconditionals="9" methods="1" coveredmethods="1" elements="55" coveredelements="55" complexity="0" loc="45" ncloc="45" packages="1" files="1" classes="1"/>
-    <file name="genDiff.js" path="/home/vladislav/dev_projects/hexlet/frontend-project-lvl2/src/genDiff.js">
+    <file name="gendiff.js" path="/home/vladislav/dev_projects/hexlet/frontend-project-lvl2/src/gendiff.js">
       <metrics statements="45" coveredstatements="45" conditionals="9" coveredconditionals="9" methods="1" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
