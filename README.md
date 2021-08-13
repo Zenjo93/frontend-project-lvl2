@@ -26,7 +26,7 @@ Example: <br>
 
 ### Stylish format
 For stylish format output type: ```gendiff -f stylish <file1> <file2>``` <br>
-Also stylish format is  using by default 
+Also stylish format is  using by default <br>
 <a href="https://asciinema.org/a/eK8MRkKP5WCLwcArhKD4UrApl"><img src="https://asciinema.org/a/eK8MRkKP5WCLwcArhKD4UrApl.png" width="400"/></a>
 
 ### Plain:
