@@ -9,25 +9,36 @@ const getUniqKeys = (file1, file2) => {
 const buildAST = (file1, file2) => {
   const keys = _.sortBy(getUniqKeys(file1, file2));
   const result = keys.map((key) => {
-    const node = {};
-    node.name = key;
     if (_.isObject(file1[key]) && _.isObject((file2[key]))) {
-      node.type = 'nested';
-      node.children = buildAST(file1[key], file2[key]);
-    } else if (!_.has(file1, key)) {
-      node.type = 'added';
-      node.value = file2[key];
-    } else if (!_.has(file2, key)) {
-      node.type = 'deleted';
-      node.value = file1[key];
-    } else if (file1[key] !== file2[key]) {
-      node.type = 'changed';
-      node.value = [file1[key], file2[key]];
-    } else if (file1[key] === file2[key]) {
-      node.type = 'unchanged';
-      node.value = file1[key];
+      return {
+        name: key,
+        type: 'nested',
+        children: buildAST(file1[key], file2[key]),
+      };
+    } if (!_.has(file1, key)) {
+      return {
+        name: key,
+        type: 'added',
+        value: file2[key],
+      };
+    } if (!_.has(file2, key)) {
+      return {
+        name: key,
+        type: 'deleted',
+        value: file1[key],
+      };
+    } if (file1[key] !== file2[key]) {
+      return {
+        name: key,
+        type: 'changed',
+        value: [file1[key], file2[key]],
+      };
     }
-    return node;
+    return {
+      name: key,
+      type: 'unchanged',
+      value: file1[key],
+    };
   });
 
   return result;
