@@ -22,7 +22,7 @@ You can use program like CLI utility via ```gendiff``` command or like import pa
 ### For help<br>
 Type `gendiff -h`<br>
 Example:
-<a href="https://asciinema.org/a/Oj2mbTeoGZBUyd1BvHh1NHcdZ"><img src="https://asciinema.org/a/Oj2mbTeoGZBUyd1BvHh1NHcdZ.png" width="836"/></a>
+<a href="https://asciinema.org/a/Oj2mbTeoGZBUyd1BvHh1NHcdZ?autoplay=1"><img src="https://asciinema.org/a/Oj2mbTeoGZBUyd1BvHh1NHcdZ.png" width="400"/></a>
 
 ### Stylish format
 For stylish format output type: ```gendiff -f stylish <file1> <file2>``` <br>
