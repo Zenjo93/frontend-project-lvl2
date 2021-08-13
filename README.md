@@ -21,21 +21,18 @@ You can use program like CLI utility via ```gendiff``` command or like import pa
 
 ### For help<br>
 Type `gendiff -h`<br>
-Example:
-<a href="https://asciinema.org/a/Oj2mbTeoGZBUyd1BvHh1NHcdZ?autoplay=1"><img src="https://asciinema.org/a/Oj2mbTeoGZBUyd1BvHh1NHcdZ.png" width="400"/></a>
+Example: <br>
+<a href="https://asciinema.org/a/Oj2mbTeoGZBUyd1BvHh1NHcdZ"><img src="https://asciinema.org/a/Oj2mbTeoGZBUyd1BvHh1NHcdZ.png" width="400"/></a>
 
 ### Stylish format
 For stylish format output type: ```gendiff -f stylish <file1> <file2>``` <br>
 Also stylish format is  using by default 
-[![asciicast](https://asciinema.org/a/eK8MRkKP5WCLwcArhKD4UrApl.png)](https://asciinema.org/a/eK8MRkKP5WCLwcArhKD4UrApl)
-
+<a href="https://asciinema.org/a/eK8MRkKP5WCLwcArhKD4UrApl"><img src="https://asciinema.org/a/eK8MRkKP5WCLwcArhKD4UrApl.png" width="400"/></a>
 
 ### Plain:
 For plain format output type: ```gendiff -f plain <file1> <file2>``` <br>
-[![asciicast](https://asciinema.org/a/JZ7Xj7Y5yuR0w7NunX2FbhvXj.png)](https://asciinema.org/a/JZ7Xj7Y5yuR0w7NunX2FbhvXj)
-
+<a href="https://asciinema.org/a/JZ7Xj7Y5yuR0w7NunX2FbhvXj"><img src="https://asciinema.org/a/JZ7Xj7Y5yuR0w7NunX2FbhvXj.png" width="400"/></a>
 
 ### JSON:
 For json format output type: ```gendiff -f json <file1> <file2>``` <br>
-[![asciicast](https://asciinema.org/a/9r1aJFiQC7sYMXuwHZM3tQacQ.png)](https://asciinema.org/a/9r1aJFiQC7sYMXuwHZM3tQacQ)
-
+<a href="https://asciinema.org/a/9r1aJFiQC7sYMXuwHZM3tQacQ"><img src="https://asciinema.org/a/9r1aJFiQC7sYMXuwHZM3tQacQ.png" width="400"/></a>
