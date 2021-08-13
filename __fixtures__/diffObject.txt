@@ -123,7 +123,7 @@
       }
     ]
 
-      at makeDiff (src/makeDiff.js:9:11)
+      at makeDiff (src/genDiff.js:9:11)
 
   console.log
     DIFFOBJECT NEW: [

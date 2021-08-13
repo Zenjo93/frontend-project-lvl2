@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import * as fs from 'fs';
-import makeDiff from '../src/makeDiff.js';
+import gendiff from '../bin/cli.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -53,3 +53,5 @@ describe('JSON formatting', () => {
     expect(actual).toEqual(JSONFormat);
   });
 });
+
+gendiff()
