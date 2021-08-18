@@ -16,7 +16,11 @@ This is training project therefore I used to ```npm publish --dry-run```.
 For installing: clone repo to your computer and run ```make install```.
 
 ## Description
+<<<<<<< HEAD
 You can use program like CLI utility via ```gendiff``` command or like import package:```import genDiff from
+=======
+You can use program like CLI utility via ```gendiff``` command or like import package:```import genDiff from 
+>>>>>>> eb1e1da5450d35f83b9d2eb3b08d8c3a5d4de76d
 '@hexlet/code' ```
 
 ### For help<br>
@@ -35,4 +39,8 @@ For plain format output type: ```gendiff -f plain <file1> <file2>``` <br>
 
 ### JSON:
 For json format output type: ```gendiff -f json <file1> <file2>``` <br>
+<<<<<<< HEAD
 <a href="https://asciinema.org/a/9r1aJFiQC7sYMXuwHZM3tQacQ"><img src="https://asciinema.org/a/9r1aJFiQC7sYMXuwHZM3tQacQ.png" width="400"/></a>
+=======
+<a href="https://asciinema.org/a/9r1aJFiQC7sYMXuwHZM3tQacQ"><img src="https://asciinema.org/a/9r1aJFiQC7sYMXuwHZM3tQacQ.png" width="400"/></a>
+>>>>>>> eb1e1da5450d35f83b9d2eb3b08d8c3a5d4de76d
