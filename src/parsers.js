@@ -1,9 +1,11 @@
 import yaml from 'js-yaml';
 
-export default (data, extension) => {
-  if (extension === '.yml' || extension === '.yaml') {
+export default (data, type) => {
+  if (type === 'yaml') {
     return yaml.load(data);
   }
-
-  return JSON.parse(data);
+  if (type === 'JSON') {
+    return JSON.parse(data);
+  }
+  throw new Error('unknown extension');
 };

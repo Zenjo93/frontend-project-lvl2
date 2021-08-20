@@ -9,7 +9,10 @@ const formatDiff = (tree, formatName) => {
   if (formatName === 'json') {
     return formatJSON(tree);
   }
-  return formatStylish(tree);
+  if (formatName === 'stylish') {
+    return formatStylish(tree);
+  }
+  throw new Error('unknown format');
 };
 
 export default formatDiff;

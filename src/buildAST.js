@@ -6,38 +6,38 @@ const getUniqKeys = (file1, file2) => {
   return _.union(keys1, keys2);
 };
 
-const buildAST = (file1, file2) => {
-  const keys = _.sortBy(getUniqKeys(file1, file2));
+const buildAST = (data1, data2) => {
+  const keys = _.sortBy(getUniqKeys(data1, data2));
   const result = keys.map((key) => {
-    if (_.isObject(file1[key]) && _.isObject((file2[key]))) {
+    if (_.isObject(data1[key]) && _.isObject((data2[key]))) {
       return {
         name: key,
         type: 'nested',
-        children: buildAST(file1[key], file2[key]),
+        children: buildAST(data1[key], data2[key]),
       };
-    } if (!_.has(file1, key)) {
+    } if (!_.has(data1, key)) {
       return {
         name: key,
         type: 'added',
-        value: file2[key],
+        value: data2[key],
       };
-    } if (!_.has(file2, key)) {
+    } if (!_.has(data2, key)) {
       return {
         name: key,
         type: 'deleted',
-        value: file1[key],
+        value: data1[key],
       };
-    } if (file1[key] !== file2[key]) {
+    } if (!_.isEqual(data1[key], data2[key])) {
       return {
         name: key,
         type: 'changed',
-        value: [file1[key], file2[key]],
+        value: [data1[key], data2[key]],
       };
     }
     return {
       name: key,
       type: 'unchanged',
-      value: file1[key],
+      value: data1[key],
     };
   });
 
