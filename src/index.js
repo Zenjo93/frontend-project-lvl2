@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import parse from './parsers.js';
 import buildAST from './buildAST.js';
-import formatDiff from './formatters';
+import formatDiff from './formatters/index.js';
 
 const readFile = (filePath) => {
   const fullPath = path.resolve(process.cwd(), filePath);
@@ -16,7 +16,7 @@ const getFileType = (filePath) => {
     return 'yaml';
   }
   if (extName === '.json') {
-    return 'JSON';
+    return 'json';
   }
   throw new Error('unknown extension');
 };
