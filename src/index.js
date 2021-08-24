@@ -9,17 +9,7 @@ const readFile = (filePath) => {
   return fs.readFileSync(fullPath);
 };
 
-const getFileType = (filePath) => {
-  const extName = path.extname(filePath);
-
-  if (extName === '.yml' || extName === '.yaml') {
-    return 'yaml';
-  }
-  if (extName === '.json') {
-    return 'json';
-  }
-  throw new Error('unknown extension');
-};
+const getFileType = (filePath) => path.extname(filePath).replace('.', '');
 
 export default (path1, path2, formatName = 'stylish') => {
   const data1 = readFile(path1);
