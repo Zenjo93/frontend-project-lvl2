@@ -41,27 +41,3 @@ const formatStylish = (tree, depth = 0) => {
 };
 
 export default formatStylish;
-
-
-// const formatStylish = (tree, depth = 1) => {
-//   const lines = tree.flatMap((node) => {
-//     if (node.type === 'nested') {
-//       return `${getIndent(depth + 1)}${node.name}: ${formatStylish(node.children, depth + 2)}`;
-//     }
-//     if (node.type === 'deleted') {
-//       return `${getIndent(depth)}${SIGNS.deleted}${node.name}: ${stringify(node.value, depth + 1)}`;
-//     }
-//     if (node.type === 'added') {
-//       return `${getIndent(depth)}${SIGNS.added}${node.name}: ${stringify(node.value, depth + 1)}`;
-//     }
-//     if (node.type === 'changed') {
-//       return [
-//         `${getIndent(depth)}${SIGNS.deleted}${node.name}: ${stringify(node.value[0], depth + 1)}`,
-//         `${getIndent(depth)}${SIGNS.added}${node.name}: ${stringify(node.value[1], depth + 1)}`,
-//       ];
-//     }
-//     return `${getIndent(depth + 1)}${SIGNS.unchanged}${node.name}: ${stringify(node.value, depth + 1)}`;
-//   });
-//   return ['{', ...lines, `${getIndent(depth - 1)}}`,
-//   ].join('\n');
-// };
