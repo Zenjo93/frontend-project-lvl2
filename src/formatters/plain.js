@@ -18,13 +18,9 @@ const mapping = {
   nested: (path, { name, children }, iter) => iter(children, `${path}${name}.`),
 };
 
-// попробуй прокинуть в итер нужные параметры для нестеда
-
 const formatPlain = (tree) => {
   const iter = (currentNode, path = '') => {
-    const lines = currentNode.flatMap((node) => {
-      return mapping[node.type](path, node, iter);
-    });
+    const lines = currentNode.flatMap((node) => mapping[node.type](path, node, iter));
     return [...lines].filter((el) => el !== 'unchanged')
       .join('\n');
   };
@@ -32,4 +28,3 @@ const formatPlain = (tree) => {
 };
 
 export default formatPlain;
-
